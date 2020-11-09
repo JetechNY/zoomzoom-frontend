@@ -1,0 +1,31 @@
+body {
+    background-color: cadetblue;
+    display: grid;
+    grid-template-areas:
+      "header header"
+      "nav main"
+    ;
+  }
+
+  ul {
+    padding: 0;
+  }
+
+  header {
+    grid-area: header;
+    border: 2px solid red;
+    text-align: center;
+  }
+
+  nav {
+    grid-area: nav;
+    border: 2px solid blue;
+    padding: 20px;
+  }
+
+  main {
+    grid-area: main;
+    border: 2px solid green;
+    padding: 20px;
+  }
+

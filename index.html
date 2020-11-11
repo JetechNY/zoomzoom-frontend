@@ -5,40 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/main.css">
     <script src="./src/index.js" defer></script>
-    <title>ZoomZoom</title>
+    <title>Zoom Zoom</title>
 </head>
 <body>
     <header>
-        <h2>Zoom Zoom</h2>
-      </header>
+        <div id="mazda-header">
+          <a><img src="https://logo-logos.com/wp-content/uploads/2016/11/Mazda_logo_logotype.png" alt="Mazda logo" /></a>
+        </div>
+    </header>
 
-      <nav>
+      <nav id="model-nav">
         <ul>
-            <li>Model</li>
-            <li>Car Link</li>
-            <li>Car Link</li>
-            <li>Car Link</li>
-            <li>Car Link</li>
+          <!-- put you car model list here-->
         </ul>
       </nav>
 
-      <main>
-        <img id="car-img" src="https://www.askideas.com/media/41/Great-Turtles-Arent-Born-Funny-Food-Meme-Image.jpg" alt="Turtle Bread">
-        <h1 id="car-model">Car Model</h1>
+      <main id="vehicle-main">
+        <img id="car-img" src="https://www.mazdausa.com/siteassets/vehicles/2020/mx-5-rf/trims/gt/34-jellies/2020-Mazda-MX-5-Miata-RF-Grand-Touring.png" alt="Miata">
+        <h1 id="car-model">Pick Your Mazda model from the "Navigation Menu" on the left!</h1>
         <div id="car-info">
-          <h3>Author</h3>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique perspiciatis tempora itaque nulla officiis rerum vitae quos amet pariatur deleniti nemo sed exercitationem maiores, aut dolorem at cupiditate aliquid alias.</p>
+          <!-- <p>Description goes here.</p> -->
         </div>
 
         <hr />
         <!-- //horizontal line -->
 
-        <h3>Specifications</h3>
+        <h2>Specifications</h2>
         <ul id="spec-list">
-          <li>Spec</li>
-          <li>Spec</li>
-          <li>Spec</li>
+          <li id ="year"></li>
+          <li id ="msrp"></li>
+          <li id ="car_type"> </li>
+          <li id ="hp" ></li>
+          <li id ="torque" ></li>
+          <li id ="mpg"> </li>
+          <li id ="seats"></li>
         </ul>
+
+        <hr />
+        <!-- //horizontal line -->
+        
+        <h2>Reviews</h2>
+        <ul id="review-list">
+        </ul>
+
+        <form id="car-review" data-id="insert car ID">
+          <label for="review">Review: </label>
+          <textarea name="review" id="review">Insert Review Here</textarea>
+          <input type="submit" value="Submit Review" />
+        </form>
+
       </main>
 </body>
 </html>

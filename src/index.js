@@ -15,7 +15,7 @@ const carTorq = document.querySelector(`#torque`)
 const carMpg = document.querySelector(`#mpg`)
 const carSeats = document.querySelector(`#seats`)
 const carReview = document.querySelector("#car-review")
-const reviewList = document.querySelector("#review-list")
+
 
 const init = () => {
     fetch(carUrl)
@@ -32,7 +32,9 @@ function carNav (carsArray) {
             const specCarUrl = carUrl +`/${li.id}`
             fetch(specCarUrl)
             .then(r=>r.json())
-            .then(carObj => {renderCar(carObj),renderReviews(carObj)} )
+            .then(carObj => {
+                renderCar(carObj)
+                renderReviews(carObj)} )
             })
         carNavUl.append(li)
     })
@@ -53,6 +55,19 @@ function renderCar(carObj){
     carReview.dataset.id = carObj.id
 }
 
+function renderReviews(carObj){
+    const reviewList = document.querySelector("#review-list")
+        while (reviewList.firstElementChild) {
+            reviewList.firstElementChild.remove()
+        }
+    const reviewArray = carObj.reviews
+    reviewArray.forEach(review => {
+        const li = document.createElement("li")
+        li.innerText = review.review
+        reviewList.append(li)
+    })
+
+}
 //click to submit
 //info to be sent to back end
 
@@ -70,20 +85,9 @@ carReview.addEventListener("submit", event => {
         })
     })
     .then(r=>r.json())
-    .then(newForm => renderCar(newForm))
+    .then(newForm => renderReviews(newForm))
     event.target.reset()
 })
-
-function renderReviews(carObj){
-    const reviewListLi = document.createElement("li")
-    const reviewArray = carObj.reviews
-    reviewArray.forEach(review => {
-        reviewListLi.innerText = review.review
-        reviewList.append(reviewListLi)
-        
-    })
-
-}
 
 init()
 

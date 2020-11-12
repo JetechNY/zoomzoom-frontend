@@ -64,6 +64,7 @@ function renderReviews(carObj){
     reviewArray.forEach(review => {
         const li = document.createElement("li")
         li.innerText = review.review
+        //add button
         reviewList.append(li)
     })
 
@@ -88,6 +89,11 @@ carReview.addEventListener("submit", event => {
     .then(newForm => renderReviews(newForm))
     event.target.reset()
 })
+
+// add edit and delete button
+// add  event listener to button
+// patch/delete fetches
+// render new reviews
 
 init()
 

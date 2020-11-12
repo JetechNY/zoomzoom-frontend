@@ -12,12 +12,6 @@ body {
 
   }
 
-  li {
-    padding: 5px;
-    border: 1px solid rgb(72, 72, 205);
-    border-radius: 30px;
-  }
-
   header {
     grid-area: header;
     border-style: 2px solid red;
@@ -26,8 +20,30 @@ body {
 
   nav {
     grid-area: nav;
-    border: 2px solid blue;
-    padding: 20px;
+    width: 200px;
+    /* position: fixed; */
+    z-index: 1;
+    top: 20px;
+    left: 10px;
+    /* background-color: #111; Black */
+    /* background: #eee; */
+    overflow-x: hidden;
+    padding: 8px 0;
+    border: 2px solid red;
+  }
+
+  .sidenav li {
+    padding: 5px;
+    /* padding: 6px 8px 6px 16px; */
+    text-decoration: none;
+    font-size: 25px;
+    color: #2196F3;
+    display: block;
+
+  }
+
+  .sidenav li:hover {
+    color: #064579;
   }
 
   main {
@@ -40,3 +56,8 @@ body {
     max-width: 100%;
     height: auto;
   }
+
+  /* @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav li {font-size: 18px;}
+  } */

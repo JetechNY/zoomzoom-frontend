@@ -16,8 +16,7 @@ const carMpg = document.querySelector(`#mpg`)
 const carSeats = document.querySelector(`#seats`)
 const carReview = document.querySelector("#car-review")
 
-
-const init = () => {
+function init() {
     fetch(carUrl)
     .then(resp => resp.json())
     .then(carsArray => carNav(carsArray))
@@ -46,7 +45,7 @@ function renderCar(carObj){
     carModel.innerText = carObj.name
     carDesc.innerText = carObj.description
     carYear.innerText = `Year: ${carObj.year}`
-    carMsrp.innerText = `Msrp: ${carObj.msrp}`
+    carMsrp.innerText = `MSRP: ${carObj.msrp}`
     carType.innerText = `Type: ${carObj.car_type}`
     carHp.innerText = `HP: ${carObj.hp}`
     carTorq.innerText = `Torque: ${carObj.torque}`
@@ -69,8 +68,6 @@ function renderReviews(carObj){
     })
 
 }
-//click to submit
-//info to be sent to back end
 
 carReview.addEventListener("submit", event => {
     event.preventDefault()
@@ -95,8 +92,12 @@ carReview.addEventListener("submit", event => {
 // patch/delete fetches
 // render new reviews
 
+
+
+
+
+
+
+
 init()
 
-
-//hello! back at you!
-//Yo 

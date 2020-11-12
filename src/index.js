@@ -64,7 +64,15 @@ function renderReviews(carObj){
         const li = document.createElement("li")
         li.innerText = review.review
         //add button
-        reviewList.append(li)
+        const editButton = document.createElement('button')
+            editButton.className = "btn-success"
+            editButton.innerHTML = 'Edit'
+        const deleteButton = document.createElement('button')
+            deleteButton.className = 'btn-danger'
+            deleteButton.textContent = 'Delete'
+
+
+        reviewList.append(li, editButton, deleteButton)
     })
 
 }

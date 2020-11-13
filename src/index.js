@@ -66,7 +66,7 @@ function renderReviews(carObj) {
             reviewList.firstElementChild.remove()
         }
 
-    
+
     const reviewArray = carObj.reviews
     reviewArray.forEach(review => {
         const li = document.createElement("li")
@@ -80,14 +80,14 @@ function renderReviews(carObj) {
 
         editForm.addEventListener("submit", event => {
             event.preventDefault()
-            patchReview(event.target.dataset.id, event.target.review.value)        
+            patchReview(event.target.dataset.id, event.target.review.value)
         })
 
     const deleteButton = document.createElement('button')
         deleteButton.className = 'delete'
         deleteButton.textContent = 'X'
         deleteButton.dataset.id = review.id
-        
+
     li.append(deleteButton, editForm)
     reviewList.append(li)
     })
@@ -143,3 +143,4 @@ carReview.addEventListener("submit", event => {
     event.target.reset()
 })
 
+init()

@@ -5,6 +5,7 @@ body {
       "header header"
       "nav main"
     ;
+    font-size: 18px;
   }
 
   ul {
@@ -20,7 +21,7 @@ body {
 
   nav {
     grid-area: nav;
-    width: 200px;
+    /* width: 200px; */
     /* position: fixed; */
     z-index: 1;
     top: 20px;
@@ -33,12 +34,20 @@ body {
   }
 
   .sidenav li {
-    padding: 5px;
+    padding: 10px;
     /* padding: 6px 8px 6px 16px; */
     text-decoration: none;
     font-size: 25px;
     color: #2196F3;
     display: block;
+    margin: 0 0 3px 0;
+    background-color: rgb(70, 70, 67);
+    border-radius: 20px;
+
+  }
+
+  .car-info {
+    /* background-color: rgb(67, 143, 180); */
 
   }
 

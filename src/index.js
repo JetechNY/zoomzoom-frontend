@@ -16,8 +16,7 @@ const carMpg = document.querySelector(`#mpg`)
 const carSeats = document.querySelector(`#seats`)
 const carReview = document.querySelector("#car-review")
 
-
-const init = () => {
+function init() {
     fetch(carUrl)
     .then(resp => resp.json())
     .then(carsArray => carNav(carsArray))
@@ -52,7 +51,7 @@ function renderCar(carObj){
     carModel.innerText = carObj.name
     carDesc.innerText = carObj.description
     carYear.innerText = `Year: ${carObj.year}`
-    carMsrp.innerText = `Msrp: ${carObj.msrp}`
+    carMsrp.innerText = `MSRP: ${carObj.msrp}`
     carType.innerText = `Type: ${carObj.car_type}`
     carHp.innerText = `HP: ${carObj.hp}`
     carTorq.innerText = `Torque: ${carObj.torque}`
@@ -118,7 +117,6 @@ const deleteReview = (id) => {
     .then(deletedReviewObj => getCarById(deletedReviewObj.model_id))
 }
 
-
 // ------Event Listeners ------
 
 document.addEventListener('click', event => {
@@ -144,7 +142,4 @@ carReview.addEventListener("submit", event => {
     .then(newReview => getCarById(newReview.model_id))
     event.target.reset()
 })
-
-init()
-
 

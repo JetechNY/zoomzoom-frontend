@@ -22,7 +22,13 @@ function init() {
     .then(carsArray => carNav(carsArray))
 }
 
-function carNav (carsArray) {
+const getCarById = (id) => {
+    fetch(carUrl+"/"+id)
+        .then(resp => resp.json())
+        .then(carObj => renderReviews(carObj))
+}
+
+function carNav(carsArray) {
     carsArray.forEach(car => {
         const li = document.createElement("li")
         li.innerText = car.name
@@ -54,28 +60,70 @@ function renderCar(carObj){
     carReview.dataset.id = carObj.id
 }
 
-function renderReviews(carObj){
+function renderReviews(carObj) {
     const reviewList = document.querySelector("#review-list")
         while (reviewList.firstElementChild) {
             reviewList.firstElementChild.remove()
         }
+
+    
     const reviewArray = carObj.reviews
     reviewArray.forEach(review => {
         const li = document.createElement("li")
         li.innerText = review.review
-        //add button
-        const editButton = document.createElement('button')
-            editButton.className = "btn-success"
-            editButton.innerHTML = 'Edit'
-        const deleteButton = document.createElement('button')
-            deleteButton.className = 'btn-danger'
-            deleteButton.textContent = 'Delete'
+        const editForm = document.createElement("form")
+        editForm.dataset.id = review.id
+        editForm.innerHTML = `
+            <label for="review">Edit:</label>
+            <input type="textfield" name="review" placeholder="${review.review}">
+            <input type="submit" value="Submit"></input><br><br>`
 
+        editForm.addEventListener("submit", event => {
+            event.preventDefault()
+            patchReview(event.target.dataset.id, event.target.review.value)        
+        })
 
-        reviewList.append(li, editButton, deleteButton)
+    const deleteButton = document.createElement('button')
+        deleteButton.className = 'delete'
+        deleteButton.textContent = 'X'
+        deleteButton.dataset.id = review.id
+        
+    li.append(deleteButton, editForm)
+    reviewList.append(li)
     })
-
 }
+
+// -----Backend stuffs --------
+const patchReview = (id, newComment) => {
+    // sends back car instance
+    fetch(`http://localhost:3000/api/v1/reviews/${id}`,{
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({ review: newComment })
+    })
+    .then(resp => resp.json())
+    .then(editedReview => getCarById(editedReview.model_id))
+}
+
+// sends back a review instance
+const deleteReview = (id) => {
+    fetch(`http://localhost:3000/api/v1/reviews/${id}`, {
+        method: 'DELETE'
+    })
+    .then(resp => resp.json())
+    .then(deletedReviewObj => getCarById(deletedReviewObj.model_id))
+}
+
+// ------Event Listeners ------
+
+document.addEventListener('click', event => {
+    if (event.target.matches('.delete')) {
+        deleteReview(event.target.dataset.id)
+    }
+})
 
 carReview.addEventListener("submit", event => {
     event.preventDefault()
@@ -91,21 +139,7 @@ carReview.addEventListener("submit", event => {
         })
     })
     .then(r=>r.json())
-    .then(newForm => renderReviews(newForm))
+    .then(newReview => getCarById(newReview.model_id))
     event.target.reset()
 })
-
-// add edit and delete button
-// add  event listener to button
-// patch/delete fetches
-// render new reviews
-
-
-
-
-
-
-
-
-init()
 

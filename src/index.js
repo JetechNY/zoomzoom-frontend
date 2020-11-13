@@ -52,7 +52,7 @@ function renderCar(carObj){
     carDesc.innerText = carObj.description
     carYear.innerText = `Year: ${carObj.year}`
     carMsrp.innerText = `MSRP: ${carObj.msrp}`
-    carType.innerText = `Type: ${carObj.car_type}`
+    carType.innerText = `Vehicle Type: ${carObj.car_type}`
     carHp.innerText = `HP: ${carObj.hp}`
     carTorq.innerText = `Torque: ${carObj.torque}`
     carMpg.innerText = `MPG: ${carObj.mpg}`

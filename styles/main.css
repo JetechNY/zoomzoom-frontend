@@ -2,9 +2,10 @@ body {
     background-color: rgb(240, 255, 255);
     display: grid;
     grid-template-areas:
-      "header header"
-      "nav main"
-    ;
+      "header header header header header"
+      "slideshow slideshow slideshow slideshow slideshow"
+      "nav main main main main"
+      ;
     font-size: 18px;
   }
 
@@ -17,11 +18,12 @@ body {
     grid-area: header;
     border-style: 2px solid red;
     text-align: center;
+
   }
 
   nav {
     grid-area: nav;
-    /* width: 200px; */
+    width: 275px;
     /* position: fixed; */
     z-index: 1;
     top: 20px;
@@ -38,35 +40,127 @@ body {
     /* padding: 6px 8px 6px 16px; */
     text-decoration: none;
     font-size: 25px;
-    color: #2196F3;
+    color: #195587;
     display: block;
     margin: 0 0 3px 0;
-    background-color: rgb(70, 70, 67);
+    background-color: rgb(152, 162, 160);
     border-radius: 20px;
-
   }
 
-  .car-info {
-    /* background-color: rgb(67, 143, 180); */
-
-  }
+.lol li {
+  margin: 3px 3px 7px 3px;
+}
 
   .sidenav li:hover {
-    color: #064579;
+    color: #e0e3e6;
   }
 
   main {
     grid-area: main;
     /* border: 2px solid green; */
-    padding: 20px;
+    /* padding: 20px; */
+    margin: 10px 10px 10px 20px;
   }
-
   img {
     max-width: 100%;
     height: auto;
   }
 
+  button{
+    margin: 10px 10px 10px 10px;
+  }
   /* @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav li {font-size: 18px;}
   } */
+
+* {box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {
+  grid-area: slideshow;
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  /* display: inline-block; */
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 2s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}

@@ -1,6 +1,7 @@
 console.log("Zoom Zoom!")
 
 const carUrl = 'http://localhost:3000/api/v1/models'
+const makeUrl = 'http://localhost:3000/api/v1/makes'
 const carsNav = document.querySelector('nav')
 const carNavUl = carsNav.querySelector(`ul`)
 const carImg = document.querySelector(`#car-img`)
@@ -16,10 +17,22 @@ const carMpg = document.querySelector(`#mpg`)
 const carSeats = document.querySelector(`#seats`)
 const carReview = document.querySelector("#car-review")
 
-function init() {
-    fetch(carUrl)
+document.addEventListener("click", event => {
+    if (event.target.matches("#subaru-header")) {
+        init(event.target.dataset.id)
+    }
+    else if (event.target.matches("#mazda-header")) {
+        init(event.target.dataset.id)
+    }
+})
+
+
+function init(id) {
+
+    fetch(makeUrl+"/"+id)
     .then(resp => resp.json())
-    .then(carsArray => carNav(carsArray))
+    .then(makeArray => carNav(makeArray.models)
+    )
 }
 
 const getCarById = (id) => {
@@ -28,7 +41,16 @@ const getCarById = (id) => {
         .then(carObj => renderReviews(carObj))
 }
 
+//event listener - click on icons
+//if pick mazda id then
+// if click suburu then
+//load those info into car nav
+
+
 function carNav(carsArray) {
+    while (carNavUl.firstElementChild) {
+        carNavUl.firstElementChild.remove()
+    }
     carsArray.forEach(car => {
         const li = document.createElement("li")
         li.innerText = car.name
@@ -177,4 +199,4 @@ function showSlides(n) {
 }
 //
 
-init()
+// init()

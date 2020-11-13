@@ -18,8 +18,13 @@ body {
     grid-area: header;
     border-style: 2px solid red;
     text-align: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+
 
   }
+ 
 
   nav {
     grid-area: nav;
